@@ -1,17 +1,45 @@
 package org.ifsc;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        BTree tree = new BTree(2);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        System.out.println("--- Inserindo chaves: 10, 20, 30 ---");
+        tree.inserir(10);
+        tree.inserir(20);
+        tree.inserir(30);
+        tree.printTree();
+        System.out.println();
+
+        System.out.println("--- Inserindo chave 40 (Vai forçar um Split da Raiz) ---");
+        tree.inserir(40);
+        tree.printTree();
+        System.out.println();
+
+        System.out.println("--- Inserindo chaves: 50, 25 ---");
+        tree.inserir(50);
+        tree.inserir(25);
+        tree.printTree();
+        System.out.println();
+
+
+
+        System.out.println("--- Testando a Busca ---");
+        int chaveParaBuscar = 25;
+        Node resultado = tree.buscar(chaveParaBuscar);
+
+        if (resultado != null) {
+            System.out.println("Chave " + chaveParaBuscar + " ENCONTRADA na árvore!");
+        } else {
+            System.out.println("Chave " + chaveParaBuscar + " NÃO encontrada.");
+        }
+
+        chaveParaBuscar = 99;
+        resultado = tree.buscar(chaveParaBuscar);
+        if (resultado != null) {
+            System.out.println("Chave " + chaveParaBuscar + " ENCONTRADA na árvore!");
+        } else {
+            System.out.println("Chave " + chaveParaBuscar + " NÃO encontrada.");
         }
     }
 }
