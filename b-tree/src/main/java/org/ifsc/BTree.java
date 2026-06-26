@@ -52,11 +52,13 @@ public class BTree {
     }
 
     private void printNode(Node node, int level) {
-        System.out.print("Nível " + level + " [ ");
+        String indent = "   ".repeat(level);
+        System.out.print(indent + "Nível " + level + " [ ");
+
         for (int i = 0; i < node.numeroAtual; i++) {
-            System.out.print(node.filhos[i] + " ");
+            System.out.print(node.chaves[i] + (i < node.numeroAtual - 1 ? ", " : ""));
         }
-        System.out.println("]");
+        System.out.println(" ]");
 
         if (!node.ehFolha) {
             for (int i = 0; i <= node.numeroAtual; i++) {

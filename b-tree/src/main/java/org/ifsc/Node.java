@@ -9,7 +9,7 @@ public class Node {
 
     public Node(int t, boolean ehFolha) {
         this.chaves = new int[2* t-1];
-        t = t;
+        this.t = t;
         this.filhos = new Node[2 * t];
         this.numeroAtual = 0;
         this.ehFolha = ehFolha;
